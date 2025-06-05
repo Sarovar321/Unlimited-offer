@@ -1,0 +1,27 @@
+<!-- Educational Demo: QR Code to Access Front Camera (SAFE) --><!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Access Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    video { width: 300px; height: auto; border: 2px solid #333; margin-top: 20px; border-radius: 12px; }
+    button { padding: 10px 20px; font-size: 16px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Welcome to Secure Check</h2>
+  <p>Click below to verify your identity via camera access (Demo Only)</p>
+  <button onclick="accessCamera()">Start Camera</button>  <div id="cameraContainer"></div>  <script>
+    async function accessCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.autoplay = true;
+        document.getElementById('cameraContainer').appendChild(video);
+      } catch (err) {
+        alert('Camera access denied or error: ' + err.message);
+      }
+    }
+  </script></body>
+</html>
